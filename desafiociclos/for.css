@@ -20,8 +20,8 @@ section{
     flex-direction: row;
     flex-wrap: wrap; */
     background-color:rgba(163, 156, 136, 0.37) ;
-    margin-left: 10vw;
-    width: 70vw;
+    margin-left: 30vw;
+    width: 40vw;
     
 }
 
@@ -30,6 +30,10 @@ section img{
     padding: 10PX;
 
 }
-h1{
+h1,p{
     text-align: center;
+}
+
+a {
+    margin-left: 5vw;
 }
