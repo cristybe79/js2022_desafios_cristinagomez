@@ -122,6 +122,10 @@ const catalogoHogar = [
 ];
 
 let carrito =[]
+let deseaAgregar = confirm('desea realizar una compra carrito')
+if (deseaAgregar === false) {
+    alert(`Bienvenido a nuestra pagina mire nuestro Catalogo`)
+} else  {
 let pdtoComprado = prompt('indique el codArt del articulo que desea llevar');
 let cantidad = parseInt(prompt(`Cuantos desea llevar`));
 
@@ -140,16 +144,21 @@ function Producto(codArt,precio,cantidad) {
     this.total =precio*cantidad
 }
 
-let deseaAgregar = confirm('desea agregar otro articulo al carrito')
 console.log(carrito)
 
-do {
-    pdtoComprado = prompt('indique el codArt del articulo que desea llevar');
-    cantidad = parseInt(prompt(`Cuantos desea llevar`));    
-    agregaCarrito()
-    deseaAgregar = confirm('desea agregar otro articulo al carrito')
-    
-} while (deseaAgregar == true)
+    let deseaAgregarOtro = confirm('desea agregar otro articulo al carrito')
+    if (deseaAgregarOtro === true) {
+        pdtoComprado = prompt('indique el codArt del articulo que desea llevar');
+        cantidad = parseInt(prompt(`Cuantos desea llevar`));
+        agregaCarrito()
+        deseaAgregarOtro = confirm('desea agregar otro articulo al carrito')
+    } else {
+        alert(`muchas gracias por su compra`)
+        
+    }
+}
+
+
 
 
 
