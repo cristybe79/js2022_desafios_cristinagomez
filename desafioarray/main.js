@@ -1,6 +1,6 @@
 const catalogoHogar = [
     {
-        id: "A001",
+        codArt: "A001",
         categoria: "decoracion",
         tipo: "almohadon",
         color: "rayado-azul",
@@ -10,7 +10,7 @@ const catalogoHogar = [
         img: "./img/a0011.jpg",
     },
     {
-        id: "A002",
+        codArt: "A002",
         categoria: "decoracion",
         tipo: "almohadon",
         color: "rayado-negro-gris",
@@ -20,7 +20,7 @@ const catalogoHogar = [
         img: "./img/a0012.jpg",
     },
     {
-        id: "A003",
+        codArt: "A003",
         categoria: "decoracion",
         tipo: "almohadon",
         color: "set almohadones",
@@ -30,7 +30,7 @@ const catalogoHogar = [
         img: "./img/a0012.jpg",
     },
     {
-        id: "A004",
+        codArt: "A004",
         categoria: "decoracion",
         tipo: "almohadon",
         color: "estampado-paris",
@@ -40,7 +40,7 @@ const catalogoHogar = [
         img: "./img/a0012.jpg",
     },
     {
-        id: "A005",
+        codArt: "A005",
         categoria: "decoracion",
         tipo: "almohadon",
         color: "liso beige",
@@ -50,7 +50,7 @@ const catalogoHogar = [
         img: "./img/a0012.jpg",
     },
     {
-        id: "A006",
+        codArt: "A006",
         categoria: "decoracion",
         tipo: "almohadon",
         color: "liso gris",
@@ -60,7 +60,7 @@ const catalogoHogar = [
         img: "./img/a0012.jpg",
     },
     {
-        id: "I001",
+        codArt: "I001",
         categoria: "ILUMINACION",
         tipo: "Lampara de pie",
         color: "base madera",
@@ -70,7 +70,7 @@ const catalogoHogar = [
         img: "./img/i001.jpg",
     },
     {
-        id: "I002",
+        codArt: "I002",
         categoria: "ILUMINACION",
         tipo: "Lampara Colgante Techo",
         color: "red negra moderna",
@@ -80,7 +80,7 @@ const catalogoHogar = [
         img: "./img/i002.jpg",
     },
     {
-        id: "I003",
+        codArt: "I003",
         categoria: "ILUMINACION",
         tipo: "Lampara Colgante Techo",
         color: "clasica",
@@ -90,7 +90,7 @@ const catalogoHogar = [
         img: "./img/i003.jpg",
     },
     {
-        id: "I004",
+        codArt: "I004",
         categoria: "ILUMINACION",
         tipo: "Lampara Colgante Techo",
         color: "modera edison redondas",
@@ -100,7 +100,7 @@ const catalogoHogar = [
         img: "./img/i004.jpg",
     },
     {
-        id: "A005",
+        codArt: "I005",
         categoria: "ILUMINACION",
         tipo: "Lampara Velador",
         color: "base metal blanco",
@@ -110,7 +110,7 @@ const catalogoHogar = [
         img: "./img/i005.jpg",
     },
     {
-        id: "A006",
+        codArt: "I006",
         categoria: "ILUMINACION",
         tipo: "Lampara Velador",
         color: "base madera blanco",
@@ -122,32 +122,35 @@ const catalogoHogar = [
 ];
 
 let carrito =[]
-let pdtoComprado = prompt('indique el id del articulo que desea llevar');
+let pdtoComprado = prompt('indique el codArt del articulo que desea llevar');
 let cantidad = parseInt(prompt(`Cuantos desea llevar`));
 
 const agregaCarrito = () => {
-    let tipo = catalogoHogar.find(el => el.id == pdtoComprado)
-    let prod = new Producto(tipo.id, tipo.precio, cantidad)
+    let tipo = catalogoHogar.find(el => el.codArt == pdtoComprado)
+    let prod = new Producto(tipo.codArt, tipo.precio, cantidad)
     carrito.push(prod)
     
 }
 agregaCarrito()
 
-function Producto(id,precio,cantidad) {
-    this.id = id
-    this.precio = precio
+function Producto(codArt,precio,cantidad) {
+    this.codArt = codArt
+    this.precio= precio
     this.cantidad = cantidad
-    this.total= function(){this.precio*this.cantidad}
+    this.total =precio*cantidad
 }
 
 let deseaAgregar = confirm('desea agregar otro articulo al carrito')
 console.log(carrito)
 
 do {
-    pdtoComprado = prompt('indique el id del articulo que desea llevar');
+    pdtoComprado = prompt('indique el codArt del articulo que desea llevar');
     cantidad = parseInt(prompt(`Cuantos desea llevar`));    
     agregaCarrito()
     deseaAgregar = confirm('desea agregar otro articulo al carrito')
     
 } while (deseaAgregar == true)
+
+
+
 
