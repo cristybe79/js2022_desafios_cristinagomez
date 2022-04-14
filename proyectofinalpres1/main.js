@@ -6,7 +6,7 @@ const catalogoHogar = [
         color: "rayado-azul",
         stock: 20,
         precio: 1000,
-        costo:700,
+        costo: 700,
         img: "./img/a0011.jpg",
     },
     {
@@ -16,7 +16,7 @@ const catalogoHogar = [
         color: "rayado-negro-gris",
         stock: 20,
         precio: 1000,
-        costo:700,
+        costo: 700,
         img: "./img/a0012.jpg",
     },
     {
@@ -46,7 +46,7 @@ const catalogoHogar = [
         color: "liso beige",
         stock: 20,
         precio: 1500,
-        costo:1100,
+        costo: 1100,
         img: "./img/a0012.jpg",
     },
     {
@@ -56,7 +56,7 @@ const catalogoHogar = [
         color: "liso gris",
         stock: 20,
         precio: 1500,
-        costo:1100,
+        costo: 1100,
         img: "./img/a0012.jpg",
     },
     {
@@ -66,7 +66,7 @@ const catalogoHogar = [
         color: "base madera",
         stock: 10,
         precio: 7000,
-        costo:1100,
+        costo: 1100,
         img: "./img/i001.jpg",
     },
     {
@@ -76,7 +76,7 @@ const catalogoHogar = [
         color: "red negra moderna",
         stock: 15,
         precio: 3000,
-        costo:1100,
+        costo: 1100,
         img: "./img/i002.jpg",
     },
     {
@@ -86,7 +86,7 @@ const catalogoHogar = [
         color: "clasica",
         stock: 5,
         precio: 10000,
-        costo:9000,
+        costo: 9000,
         img: "./img/i003.jpg",
     },
     {
@@ -96,7 +96,7 @@ const catalogoHogar = [
         color: "modera edison redondas",
         stock: 5,
         precio: 12000,
-        costo:10000,
+        costo: 10000,
         img: "./img/i004.jpg",
     },
     {
@@ -106,7 +106,7 @@ const catalogoHogar = [
         color: "base metal blanco",
         stock: 25,
         precio: 2000,
-        costo:1500,
+        costo: 1500,
         img: "./img/i005.jpg",
     },
     {
@@ -116,7 +116,7 @@ const catalogoHogar = [
         color: "base madera blanco",
         stock: 20,
         precio: 2500,
-        costo:1700,
+        costo: 1700,
         img: "./img/i006.jpg",
     },
 ];
@@ -129,50 +129,63 @@ const saludar = () => {
 };
 saludar();
 
-let carrito =[]
+//Carrito
+let carrito = []
+
+
+//Proceso de Compra
 let deseaAgregar = confirm('desea realizar una compra carrito')
 if (deseaAgregar === false) {
     alert(`Bienvenido a nuestra pagina mire nuestro Catalogo`)
-} else  {
-let pdtoComprado = prompt('indique el codArt del articulo que desea llevar');
-let cantidad = parseInt(prompt(`Cuantos desea llevar`));
+} else {
+    let pdtoComprado = prompt('indique el codArt del articulo que desea llevar');
+    let cantidad = parseInt(prompt(`Cuantos desea llevar`));
 
-const agregaCarrito = () => {
-    let tipo = catalogoHogar.find(el => el.codArt == pdtoComprado)
-    let prod = new Producto(tipo.codArt, tipo.precio, cantidad)
-    carrito.push(prod)
-    
-}
-agregaCarrito()
+    const agregaCarrito = () => {
+        let tipo = catalogoHogar.find(el => el.codArt == pdtoComprado)
+        let prod = new Producto(tipo.codArt, tipo.precio, cantidad)
+        carrito.push(prod)
 
-function Producto(codArt,precio,cantidad) {
-    this.codArt = codArt
-    this.precio= precio
-    this.cantidad = cantidad
-    this.total =precio*cantidad
-}
+    }
+    agregaCarrito()
 
-console.log(carrito)
+    function Producto(codArt, precio, cantidad) {
+        this.codArt = codArt
+        this.precio = precio
+        this.cantidad = cantidad
+        this.total = precio * cantidad
+    }
+
+    console.log(carrito)
 
     let deseaAgregarOtro = confirm('desea agregar otro articulo al carrito')
     if (deseaAgregarOtro === true) {
         pdtoComprado = prompt('indique el codArt del articulo que desea llevar');
         cantidad = parseInt(prompt(`Cuantos desea llevar`));
-        agregaCarrito()
         deseaAgregarOtro = confirm('desea agregar otro articulo al carrito')
+
+        agregaCarrito()
     } else {
         alert(`muchas gracias por su compra`)
-        
+
     }
 }
+
+
+
+
 
 let contadorCarrito = carrito.reduce((acc, prod) => acc += prod.cantidad, 0)
 let totalCarrito = carrito.reduce((acc, prod) => acc += prod.total, 0)
 
 console.log(contadorCarrito)
 console.log(totalCarrito)
+// let mapeoCarrito = carrito.map()
+// let index = catalogoHogar.indexOf(item)
+
+
+
 
 
 
 alert(`Muchas gracias por su compra ${nombreCliente} el total de su compra es ${totalCarrito}`)
-
