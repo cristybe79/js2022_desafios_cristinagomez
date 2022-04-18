@@ -27,7 +27,7 @@ const catalogoHogar = [
         stock: 17,
         precio: 3000,
         costo: 2200,
-        img: "./img/a0012.jpg",
+        img: "./img/a003.jpg",
     },
     {
         codArt: "A004",
@@ -37,7 +37,7 @@ const catalogoHogar = [
         stock: 13,
         precio: 1500,
         costo: 1100,
-        img: "./img/a0012.jpg",
+        img: "./img/a004.jpg",
     },
     {
         codArt: "A005",
@@ -47,7 +47,7 @@ const catalogoHogar = [
         stock: 11,
         precio: 1500,
         costo: 1100,
-        img: "./img/a0012.jpg",
+        img: "./img/a005.jpg",
     },
     {
         codArt: "A006",
@@ -57,7 +57,7 @@ const catalogoHogar = [
         stock: 10,
         precio: 1500,
         costo: 1100,
-        img: "./img/a0012.jpg",
+        img: "./img/a006.jpg",
     },
     {
         codArt: "I001",
@@ -120,58 +120,39 @@ const catalogoHogar = [
         img: "./img/i006.jpg",
     },
 ];
-//Saludo
-let nombreCliente = prompt(`Buenos días!, ingresa tu nombre`);
+// //Saludo
+// let nombreCliente = prompt(`Buenos días!, ingresa tu nombre`);
 
-//Cliente
-const saludar = () => {
-    alert(`hola ${nombreCliente} Como estas?`);
-};
-saludar();
+// //Cliente
+// const saludar = () => {
+//     alert(`hola ${nombreCliente} Como estas?`);
+// };
+// saludar();
 
 //Carrito
 let carrito = []
 
 
-//Proceso de Compra
-let deseaAgregar = confirm('desea realizar una compra carrito')
-if (deseaAgregar === false) {
-    alert(`Bienvenido a nuestra pagina mire nuestro Catalogo`)
-} else {
-    let pdtoComprado = prompt('indique el codArt del articulo que desea llevar');
-    let cantidad = parseInt(prompt(`Cuantos desea llevar`));
 
-    const agregaCarrito = () => {
-        let tipo = catalogoHogar.find(el => el.codArt == pdtoComprado)
-        console.log(tipo.stock)
 
-        let prod = new Producto(tipo.codArt, tipo.precio, cantidad)
-        carrito.push(prod)
+// const agregaCarrito = () => {
+//     let tipo = catalogoHogar.find(el => el.codArt == pdtoComprado)
+//     console.log(tipo.stock)
 
-    }
-    agregaCarrito()
+//     let prod = new Producto(tipo.codArt, tipo.precio, cantidad)
+//     carrito.push(prod)
 
-    function Producto(codArt, precio, cantidad) {
-        this.codArt = codArt
-        this.precio = precio
-        this.cantidad = cantidad
-        this.total = precio * cantidad
-    }
+// }
+// agregaCarrito()
 
-    console.log(carrito)
-
-    let deseaAgregarOtro = confirm('desea agregar otro articulo al carrito')
-    if (deseaAgregarOtro === true) {
-        pdtoComprado = prompt('indique el codArt del articulo que desea llevar');
-        cantidad = parseInt(prompt(`Cuantos desea llevar`));
-        deseaAgregarOtro = confirm('desea agregar otro articulo al carrito')
-
-        agregaCarrito()
-    } else {
-        alert(`muchas gracias por su compra`)
-
-    }
+function Producto(codArt, precio, cantidad) {
+    this.codArt = codArt
+    this.precio = precio
+    this.cantidad = cantidad
+    this.total = precio * cantidad
 }
+
+console.log(carrito)
 
 
 
@@ -188,8 +169,32 @@ console.log(totalCarrito)
 // let index = catalogoHogar.indexOf(item)
 
 
+const contenedorCategory1 = document.getElementById('category1')
+const mostrarCategoriasDecoracion = () => {
+    const filtrado = catalogoHogar.filter((producto) => producto.categoria === "decoracion")
+    console.log(filtrado)
+    contenedorCategory1.innerHTML = ''
+    filtrado.forEach((cat) => {
+        const div = document.createElement('div')
+        div.innerHTML = `
+        <img src = ${cat.img} alt="${cat.tipo}"/>                
+        `
+        contenedorCategory1.appendChild(div)
+    })
+}
+mostrarCategoriasDecoracion()
 
-
-
-
-alert(`Muchas gracias por su compra ${nombreCliente} el total de su compra es ${totalCarrito}`)
+const contenedorCategory = document.getElementById('category2')
+const mostrarCategoriasIluminacion = () => {
+    const filtrado = catalogoHogar.filter((producto) => producto.categoria === "ILUMINACION")
+    console.log(filtrado)
+    contenedorCategory.innerHTML = ''
+    filtrado.forEach((cat) => {
+        const div = document.createElement('div')
+        div.innerHTML = `
+        <img src = ${cat.img} alt="${cat.tipo}"/>                
+        `
+        contenedorCategory.appendChild(div)
+    })
+}
+mostrarCategoriasIluminacion()
