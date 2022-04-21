@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration-line: none;
+}
+.imgLogo {
+    width: 20vh;
+
+}
+nav{
+    background-color:rgba(163, 156, 136, 0.98);
+    height: 7vh;
+
+}
+
+
+.menuNavegacion {
+    list-style-type: none;
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    width: 50vw;
+    padding-left: 30vw;
+    padding-top: 2vh;
+
+}
+li a{
+    color:aliceblue !important;
+    text-decoration: none !important;
+}
+body{
+    background-color: rgb(253, 253, 253);
+}
+
+header{
+    background-color: rgba(163, 156, 136, 0.753);
+    min-height: 10vh;
+}
+footer{
+    background-color: rgba(163, 156, 136, 0.98);
+    min-height: 50vh;
+}
+.imagenInicial{
+    background-image:url("./img/nav01.jpg") ;
+
+    min-height: 100vh;
+}
+main{
+    min-height: 70vh;
+}
+.lineaSeccion{
+    padding: 1%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color:rgba(163, 156, 136, 0.37) ;
+    margin-left: 20px;
+    width: 70vw;
+    
+}
+
+.lineaSeccion img{
+    max-width: 200px;
+    padding: 10PX;
+
+}
+h1{
+    text-align: center;
+}
+#category{
+    background-color:rgba(163, 156, 136, 0.37) ;
+    margin: 10px;
+}
+
+.fab{
+    font-size:2rem;
+}
+
+.login{
+    visibility: hidden;
+}
+
+.modal-active {
+    visibility: visible;
+    opacity: 1;
+    z-index: 3;
+}
