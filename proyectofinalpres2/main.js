@@ -1,11 +1,11 @@
 
 const contenedorCategory1 = document.getElementById('category1')
 
-//lo traigo desde bd
+//lo traigo desde bd por Storage
 const catalogoHogar1 = JSON.parse(localStorage.getItem("catalogoCompleto"))
 
 
-
+///Mostrar catalogo
 const mostrarCategoriasDecoracion = () => {
 const filtrado = catalogoHogar1.filter((producto) => producto.categoria === "decoracion")
 console.log(filtrado)
@@ -35,12 +35,11 @@ filtrado.forEach((cat) => {
 }
 mostrarCategoriasIluminacion()
 
-//login usuario//
+
+//===============login usuario//
 const abrirLogin = document.querySelector(".abrirLogin")
 const login = document.querySelector(".login")
 const cerrarLogin = document.querySelector("#cerrarLogin")
-
-
 
 abrirLogin.addEventListener('click', () => {
     login.classList.add('modal-active')
@@ -51,6 +50,7 @@ cerrarLogin.addEventListener('click', () => {
     login.classList.remove('modal-active')
 })
 
+
 //validacion
 const inputNombre = document.getElementById('nombre')
 const inputMail = document.getElementById('email')
@@ -58,7 +58,6 @@ const errorNombre = document.getElementById('nombreValido')
 const errorMail = document.getElementById('mailValido')
 
 inputNombre.addEventListener('input', () => {
-    // console.log(e)
 
     let nombre = inputNombre.value
     console.log(inputNombre.value)
@@ -80,7 +79,7 @@ inputMail.addEventListener('input', () => {
         errorMail.classList.remove('error-mostrar')
     }
 })
-
+// toma los valores y los carga en un array
 const usuarioRegistrado = []
 const suscripcion = document.getElementById('suscripcion')
 const formulario = document.getElementById('formulario')
@@ -99,5 +98,6 @@ formulario.addEventListener('submit', (e) => {
         registroExito.classList.remove('noMostrar')
         formulario.reset()
     }
-
+    localStorage.setItem("usuariosRegistrados", JSON.stringify(usuarioRegistrado))
 })
+
